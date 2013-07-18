@@ -1,16 +1,13 @@
 var express = require('express');
 var fs = require('fs');
-var input_file = "index.txt";
-
-var file_buffer = fs.readFileSync(input_file);
-var file_string = file_buffer.toString();
-
+var infile = 'index.html'
 var app = express.createServer(express.logger());
 
+var my_buff = fs.readFileSync(infile);
+var out = my_buff.toString();
+
 app.get('/', function(request, response) {
-//  response.send('Hello World2!');
-  response.send(file_string);
-  
+  response.send(out);
 });
 
 var port = process.env.PORT || 5000;
